@@ -54,12 +54,16 @@ const Home = ({ setUsername, username, setApiQuestions }) => {
         );
         const data = await request.json();
         if (request.status === 200) {
+          console.log(data.results);
           const newQuestions = data.results.map((question, index) => {
             return {
               ...question,
               question: decodeString(question.question),
+              correct_answer: decodeString(question.correct_answer),
+              incorrect_answers: decodeArrString(question.incorrect_answers),
             };
           });
+          console.log(newQuestions);
           setApiQuestions(newQuestions);
           navigate('/quizpage');
         } else {
@@ -77,6 +81,16 @@ const Home = ({ setUsername, username, setApiQuestions }) => {
     const textarea = document.createElement('textarea');
     textarea.innerHTML = str;
     return textarea.value;
+  };
+
+  const decodeArrString = str => {
+    const betterstr = str.map(str => {
+      const textarea = document.createElement('textarea');
+      textarea.innerHTML = str;
+      return textarea.value;
+    });
+
+    return betterstr;
   };
 
   const handleOptionOnChange = e => {

@@ -21,7 +21,7 @@ import { useNavigate } from 'react-router-dom';
 import QuizImage from '../img/quiz.svg';
 
 const Home = ({ setUsername, username, setApiQuestions }) => {
-  const [difficultyOptions] = useState(['easy', 'medium', 'hard']);
+  const [difficultyOptions] = useState(['Easy', 'Medium', 'Hard']);
   const [categoryOptions, setCategoryOptions] = useState([]);
   const [categoryOption, setCategoryOption] = useState('');
   const [difficultOption, setDifficultOption] = useState('');
@@ -102,13 +102,6 @@ const Home = ({ setUsername, username, setApiQuestions }) => {
     });
   };
 
-  const capitilizeFirstLetter = (
-    [first, ...rest],
-    locale = navigator.language
-  ) => {
-    return first.toLocaleUpperCase(locale) + rest.join('');
-  };
-
   return (
     <>
       <HStack
@@ -154,14 +147,14 @@ const Home = ({ setUsername, username, setApiQuestions }) => {
             </Select>
             <Select
               size="lg"
-              onChange={e => setDifficultOption(e.target.value)}
+              onChange={e => setDifficultOption(e.target.value.toLowerCase())}
               bg={'blue.200'}
               color="black"
               placeholder="Select difficulty"
             >
               {difficultyOptions.map((option, index) => (
                 <option key={index} value={option}>
-                  {capitilizeFirstLetter(option)}
+                  {option}
                 </option>
               ))}
             </Select>

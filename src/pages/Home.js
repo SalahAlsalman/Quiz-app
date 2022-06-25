@@ -20,26 +20,30 @@ import {
 import { useNavigate } from 'react-router-dom';
 import QuizImage from '../img/quiz.svg';
 
-const Home = ({ setUsername, username, score, setScore }) => {
+const Home = ({ setUsername, username, setApiQuestions }) => {
   const [difficultyOptions] = useState(['easy', 'medium', 'hard']);
   const [categoryOptions, setCategoryOptions] = useState([]);
   const [categoryOption, setCategoryOption] = useState('');
   const [difficultOption, setDifficultOption] = useState('');
-  const [apiQuestions, setApiQuestions] = useState([]);
+
   const [errorStatus, setErrorStatus] = useState(false);
 
   const navigate = useNavigate();
   useEffect(() => {
-    const fetchCategoryOptionsAPI = async () => {
-      const request = await fetch('https://opentdb.com/api_category.php');
-      const data = await request.json();
-      if (request.status === 200) {
-        setCategoryOptions(data.trivia_categories);
-      } else {
-        setErrorStatus(true);
-      }
-    };
-    fetchCategoryOptionsAPI();
+    try {
+      const fetchCategoryOptionsAPI = async () => {
+        const request = await fetch('https://opentdb.com/api_category.php');
+        const data = await request.json();
+        if (request.status === 200) {
+          setCategoryOptions(data.trivia_categories);
+        } else {
+          setErrorStatus(true);
+        }
+      };
+      fetchCategoryOptionsAPI();
+    } catch (error) {
+      navigate('/');
+    }
   }, []);
 
   const handleStartQuizButton = () => {
@@ -50,7 +54,13 @@ const Home = ({ setUsername, username, score, setScore }) => {
         );
         const data = await request.json();
         if (request.status === 200) {
-          setApiQuestions(data.results);
+          const newQuestions = data.results.map((question, index) => {
+            return {
+              ...question,
+              question: decodeString(question.question),
+            };
+          });
+          setApiQuestions(newQuestions);
           navigate('/quizpage');
         } else {
           setErrorStatus(true);
@@ -58,8 +68,15 @@ const Home = ({ setUsername, username, score, setScore }) => {
       };
       fetchQuizFromAPI();
     } catch (e) {
-      console.log(e);
+      navigate('/');
     }
+  };
+
+  //decode questions and answers so it's doesn't have weird html elemnts
+  const decodeString = str => {
+    const textarea = document.createElement('textarea');
+    textarea.innerHTML = str;
+    return textarea.value;
   };
 
   const handleOptionOnChange = e => {

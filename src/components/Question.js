@@ -14,20 +14,14 @@ const Question = ({
   currQuestion,
   currPossibleAnswers,
   selected,
-  handleColorScheme,
   itemClicked,
   onQuitClick,
   onNextClick,
 }) => {
+  //   const isCorrectAnswer = currentAnswer && answer === correctAnswer;
+
   return (
-    <VStack
-      backgroundColor="teal"
-      d="flex"
-      justifyContent="center"
-      alignItems="center"
-      width="100%"
-      height="100vh"
-    >
+    <VStack>
       <Grid
         w="60rem"
         h="300px"
@@ -46,7 +40,6 @@ const Question = ({
           return (
             <GridItem borderRadius={15} height="100px" key={index} colSpan={2}>
               <Button
-                backgroundColor={selected ? handleColorScheme(index) : 'white'}
                 disabled={selected}
                 onClick={itemClicked}
                 key={index}

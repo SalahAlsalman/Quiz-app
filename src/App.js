@@ -14,10 +14,12 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
 import QuizPage from './pages/QuizPage';
+import Result from './pages/Result';
 
 function App() {
   const [username, setUsername] = useState('');
   const [score, setScore] = useState(0);
+  const [apiQuestions, setApiQuestions] = useState([]);
 
   return (
     <BrowserRouter>
@@ -28,12 +30,24 @@ function App() {
             <Home
               username={username}
               setUsername={setUsername}
-              score={score}
-              setScore={setScore}
+              setApiQuestions={setApiQuestions}
             />
           }
         />
-        <Route path="/quizpage" element={<QuizPage />} />
+        <Route
+          path="/quizpage"
+          element={
+            <QuizPage
+              score={score}
+              setScore={setScore}
+              apiQuestionsFromAPI={apiQuestions}
+            />
+          }
+        />
+        <Route
+          path="/result"
+          element={<Result score={score} username={username} />}
+        />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

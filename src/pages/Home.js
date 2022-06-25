@@ -102,6 +102,13 @@ const Home = ({ setUsername, username, setApiQuestions }) => {
     });
   };
 
+  const capitilizeFirstLetter = (
+    [first, ...rest],
+    locale = navigator.language
+  ) => {
+    return first.toLocaleUpperCase(locale) + rest.join('');
+  };
+
   return (
     <>
       <HStack
@@ -133,8 +140,10 @@ const Home = ({ setUsername, username, setApiQuestions }) => {
               </FormControl>
             </HStack>
             <Select
+              size="lg"
               onChange={handleOptionOnChange}
-              bg={'white'}
+              bg={'blue.200'}
+              color="black"
               marginTop={10}
               boxShadow="base"
               placeholder="Select category"
@@ -144,13 +153,15 @@ const Home = ({ setUsername, username, setApiQuestions }) => {
               })}
             </Select>
             <Select
+              size="lg"
               onChange={e => setDifficultOption(e.target.value)}
+              bg={'blue.200'}
+              color="black"
               placeholder="Select difficulty"
-              bg={'white'}
             >
               {difficultyOptions.map((option, index) => (
                 <option key={index} value={option}>
-                  {option}
+                  {capitilizeFirstLetter(option)}
                 </option>
               ))}
             </Select>

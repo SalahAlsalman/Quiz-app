@@ -70,6 +70,7 @@ const Question = ({
                     : 'white'
                 } `}
                 key={index}
+                color="white"
                 bgColor="gray.600"
                 width="29rem"
                 height="100px"

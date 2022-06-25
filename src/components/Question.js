@@ -14,10 +14,21 @@ const Question = ({
   currQuestion,
   currPossibleAnswers,
   selected,
+  correctAnswer,
   itemClicked,
   onQuitClick,
   onNextClick,
 }) => {
+  const handleSelect = i => {
+    if (selected === i && selected === correctAnswer) {
+      // return 'green';
+      return 'red';
+    } else if (selected === i && selected !== correctAnswer) {
+      return 'green';
+    } else if (i === correctAnswer) {
+      return 'red';
+    }
+  };
   //   const isCorrectAnswer = currentAnswer && answer === correctAnswer;
 
   return (
@@ -30,8 +41,15 @@ const Question = ({
         gap="40px"
         marginBottom="10rem"
       >
-        <GridItem colSpan={4} bg="white" height="200px">
-          <Text mt={5} textAlign={'center'} fontSize={25}>
+        <GridItem
+          colSpan={4}
+          bg="blue.400"
+          height="200px"
+          borderRadius={15}
+          overflow="auto"
+          p={5}
+        >
+          <Text mt={5} textAlign={'center'} color="white" fontSize={25}>
             {currQuestion}
           </Text>
         </GridItem>
@@ -42,7 +60,17 @@ const Question = ({
               <Button
                 disabled={selected}
                 onClick={itemClicked}
+                className={`singleOption ${
+                  selected === answer && selected === correctAnswer
+                    ? 'red'
+                    : selected === answer && selected !== correctAnswer
+                    ? 'green'
+                    : answer === correctAnswer
+                    ? 'green'
+                    : 'white'
+                } `}
                 key={index}
+                bgColor="gray.600"
                 width="29rem"
                 height="100px"
                 fontSize={20}

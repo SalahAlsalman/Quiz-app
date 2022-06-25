@@ -12,7 +12,7 @@ const Result = ({ username, score }) => {
   return (
     <Stack
       spacing={10}
-      backgroundColor="teal"
+      backgroundColor="blue.300"
       d="flex"
       justifyContent="center"
       alignItems="center"
@@ -23,15 +23,10 @@ const Result = ({ username, score }) => {
         alignContent="center"
         textAlign="center"
         width="30rem"
-        backgroundColor="whiteAlpha.600"
         borderRadius={10}
         p={5}
       >
-        <Heading
-          bgGradient="linear(to-l, #7928CA, #FF0080)"
-          bgClip="text"
-          fontSize="4rem"
-        >
+        <Heading color="white" fontSize="4rem">
           Results:
         </Heading>
       </Box>
@@ -39,14 +34,13 @@ const Result = ({ username, score }) => {
         alignContent="center"
         textAlign="center"
         width="30rem"
-        backgroundColor="whiteAlpha.600"
         borderRadius={10}
         pt={5}
       >
-        <Text fontSize="2rem">
-          <span color="white">{username}</span> have scored a total of:
+        <Text fontSize="2rem" color="white">
+          {username}: have scored a total of:
         </Text>
-        <Text fontSize="2rem" mb={5}>
+        <Text color="white" fontSize="2rem" mb={5}>
           {score} of 10
         </Text>
       </Box>
@@ -56,8 +50,8 @@ const Result = ({ username, score }) => {
         width="20rem"
         height="5rem"
         fontSize="2rem"
-        color="black"
-        backgroundColor="lightBlue"
+        color="white"
+        backgroundColor="whiteAlpha.400"
         borderRadius={15}
       >
         Go to home

@@ -105,7 +105,7 @@ const Home = ({ setUsername, username, setApiQuestions }) => {
   return (
     <>
       <HStack
-        backgroundColor="teal"
+        backgroundColor="white"
         d="flex"
         justifyContent="center"
         alignItems="center"
@@ -114,7 +114,7 @@ const Home = ({ setUsername, username, setApiQuestions }) => {
       >
         <Box>
           <Stack spacing={4} marginX={4} minWidth={'10rem'} width={'30rem'}>
-            <Heading color="white" alignSelf="center" mb={5}>
+            <Heading color="black" alignSelf="center" mb={5}>
               Quiz Settings
             </Heading>
             <HStack>
@@ -123,18 +123,24 @@ const Home = ({ setUsername, username, setApiQuestions }) => {
                   Username:
                 </FormLabel>
                 <Input
-                  color="white"
+                  color="black"
+                  bgColor="blue.200"
+                  height="3rem"
+                  fontSize="1.25rem"
+                  fontWeight="medium"
                   value={username}
                   onChange={e => setUsername(e.target.value)}
-                  variant="outline"
+                  variant="filled"
                   placeholder="Enter your username"
-                  _placeholder={{ opacity: 0.4, color: 'white' }}
+                  _placeholder={{ opacity: 0.6, color: 'black' }}
                 />
               </FormControl>
             </HStack>
             <Select
               size="lg"
               onChange={handleOptionOnChange}
+              fontSize="1.25rem"
+              fontWeight="medium"
               bg={'blue.200'}
               color="black"
               marginTop={10}
@@ -147,6 +153,8 @@ const Home = ({ setUsername, username, setApiQuestions }) => {
             </Select>
             <Select
               size="lg"
+              fontSize="1.25rem"
+              fontWeight="medium"
               onChange={e => setDifficultOption(e.target.value.toLowerCase())}
               bg={'blue.200'}
               color="black"

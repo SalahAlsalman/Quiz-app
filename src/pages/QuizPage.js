@@ -66,13 +66,14 @@ function QuizPage({ score, setScore, apiQuestionsFromAPI }) {
       setSelected(true);
       setUserAnswers([...userAnswers, true]);
       setCurrentAnswer(e.nativeEvent.target.innerText);
+      console.log('here');
     } else {
       setSelected(true);
       setUserAnswers([...userAnswers, false]);
     }
   };
 
-  //TODO: fix this
+  //TODO: fix this color when pressed green
   const handleColorScheme = e => {
     // console.log(e);
     // if (selected) {

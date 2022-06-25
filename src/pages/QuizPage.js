@@ -44,15 +44,22 @@ function QuizPage({ score, setScore, apiQuestionsFromAPI }) {
           }
         });
         setScore(numof.length);
-        console.log(numof.length);
         return navigate('/result');
       }
       setCurrQuestionIndex(currQuestionIndex + 1);
       setCurrQuestion(apiQuestions[currQuestionIndex + 1].question);
-      setCurrPossibleAnswers([
-        apiQuestions[currQuestionIndex + 1].correct_answer,
-        ...apiQuestions[currQuestionIndex + 1].incorrect_answers,
-      ]);
+      setCurrPossibleAnswers(
+        [
+          apiQuestions[currQuestionIndex + 1].correct_answer,
+          ...apiQuestions[currQuestionIndex + 1].incorrect_answers,
+        ]
+          .map(answer => ({
+            sort: Math.random(),
+            value: answer,
+          }))
+          .sort((a, b) => a.sort - b.sort)
+          .map(obj => obj.value)
+      );
       setCorrectAnswer(apiQuestions[currQuestionIndex + 1].correct_answer);
       setSelected(false);
       setShowError(false);
@@ -66,7 +73,6 @@ function QuizPage({ score, setScore, apiQuestionsFromAPI }) {
       setSelected(true);
       setUserAnswers([...userAnswers, true]);
       setCurrentAnswer(e.nativeEvent.target.innerText);
-      console.log('here');
     } else {
       setSelected(true);
       setUserAnswers([...userAnswers, false]);
@@ -96,13 +102,7 @@ function QuizPage({ score, setScore, apiQuestionsFromAPI }) {
       </Text>
       <Question
         currQuestion={currQuestion}
-        currPossibleAnswers={currPossibleAnswers
-          .map(answer => ({
-            sort: Math.random(),
-            value: answer,
-          }))
-          .sort((a, b) => a.sort - b.sort)
-          .map(obj => obj.value)}
+        currPossibleAnswers={currPossibleAnswers}
         selected={selected}
         itemClicked={itemClicked}
         onQuitClick={onQuitClick}

@@ -90,7 +90,7 @@ function QuizPage({ score, setScore, apiQuestionsFromAPI }) {
 
   return (
     <Stack
-      backgroundColor="white"
+      backgroundColor="gray.400"
       d="flex"
       justifyContent="center"
       alignItems="center"

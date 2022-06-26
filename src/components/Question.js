@@ -74,7 +74,7 @@ const Question = ({
                 bgColor="gray.600"
                 width={["10rem","29rem"]}
                 height={['50px',"100px"]}
-                fontSize={[17,20]}
+                fontSize={[12,20]}
               >
                 {answer}
               </Button>

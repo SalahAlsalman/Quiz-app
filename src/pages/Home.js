@@ -54,7 +54,10 @@ const Home = ({ setUsername, username, setApiQuestions }) => {
         );
         const data = await request.json();
         if (request.status === 200) {
-          console.log(data.results);
+          if (data.response_code !== 0) {
+            return navigate('/categorynotfound');
+          }
+
           const newQuestions = data.results.map((question, index) => {
             return {
               ...question,
@@ -184,7 +187,7 @@ const Home = ({ setUsername, username, setApiQuestions }) => {
             )}
           </Stack>
         </Box>
-        <Box hidden={[true,false]} width="50%">
+        <Box visibility={['hidden', 'visible']} width={['0%', '50%']}>
           <Image src={QuizImage} />
         </Box>
       </HStack>

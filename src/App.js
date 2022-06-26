@@ -15,6 +15,7 @@ import Home from './pages/Home';
 import NotFound from './pages/NotFound';
 import QuizPage from './pages/QuizPage';
 import Result from './pages/Result';
+import CategoryNotFound from './pages/CategoryNotFound';
 
 function App() {
   const [username, setUsername] = useState('');
@@ -48,6 +49,7 @@ function App() {
           path="/result"
           element={<Result score={score} username={username} />}
         />
+        <Route path="/categorynotfound" element={<CategoryNotFound />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

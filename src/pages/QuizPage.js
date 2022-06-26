@@ -113,7 +113,7 @@ function QuizPage({ score, setScore, apiQuestionsFromAPI }) {
       <Alert
         hidden={!showError}
         status="error"
-        width="60rem"
+        width={['15rem',"60rem"]}
         pt="25"
         alignContent="center"
         justifyContent="center"

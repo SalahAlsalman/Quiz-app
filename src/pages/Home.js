@@ -113,7 +113,12 @@ const Home = ({ setUsername, username, setApiQuestions }) => {
         height="100vh"
       >
         <Box>
-          <Stack spacing={4} marginX={4} minWidth={'10rem'} width={'30rem'}>
+          <Stack
+            spacing={4}
+            marginX={4}
+            minWidth={'10rem'}
+            width={['15rem', '30rem']}
+          >
             <Heading color="black" alignSelf="center" mb={5}>
               Quiz Settings
             </Heading>
@@ -179,7 +184,7 @@ const Home = ({ setUsername, username, setApiQuestions }) => {
             )}
           </Stack>
         </Box>
-        <Box width="50%">
+        <Box hidden={[true,false]} width="50%">
           <Image src={QuizImage} />
         </Box>
       </HStack>

@@ -34,8 +34,8 @@ const Question = ({
   return (
     <VStack>
       <Grid
-        w="60rem"
-        h="300px"
+        w={['20rem',"60rem"]}
+        h={["200px","300px"]}
         templateRows="repeat(2, 1fr)"
         templateColumns="repeat(4, 1fr)"
         gap="40px"
@@ -44,19 +44,19 @@ const Question = ({
         <GridItem
           colSpan={4}
           bg="blue.400"
-          height="200px"
+          height={['180px',"200px"]}
           borderRadius={15}
           overflow="auto"
           p={5}
         >
-          <Text mt={5} textAlign={'center'} color="white" fontSize={25}>
+          <Text mt={5} textAlign={'center'} color="white" fontSize={[15,25]}>
             {currQuestion}
           </Text>
         </GridItem>
 
         {currPossibleAnswers.map((answer, index) => {
           return (
-            <GridItem borderRadius={15} height="100px" key={index} colSpan={2}>
+            <GridItem borderRadius={15} height={["50px","100px"]} width={['50px','100px']} marginRight={5} key={index} colSpan={2}>
               <Button
                 disabled={selected}
                 onClick={itemClicked}
@@ -72,9 +72,9 @@ const Question = ({
                 key={index}
                 color="white"
                 bgColor="gray.600"
-                width="29rem"
-                height="100px"
-                fontSize={20}
+                width={["10rem","29rem"]}
+                height={['50px',"100px"]}
+                fontSize={[17,20]}
               >
                 {answer}
               </Button>
@@ -86,21 +86,23 @@ const Question = ({
         <Button
           onClick={onQuitClick}
           colorScheme="red"
-          mr="35px"
-          mt="50px"
-          width="29rem"
-          fontSize="24"
-          height="100px"
+          mr={["20px","35px"]}
+          mt={["30px","50px"]}
+          width={["10rem","29rem"]}
+          fontSize={["18","24"]}
+          height={["50px","100px"]}
+          borderRadius={[20,10]}
         >
           Quit
         </Button>
         <Button
           onClick={onNextClick}
-          mt="50px"
+          mt={["30px","50px"]}
           colorScheme="blue"
-          fontSize="24"
-          width="29rem"
-          height="100px"
+          fontSize={["18","24"]}
+          width={["10rem","29rem"]}
+          height={["50px","100px"]}
+          borderRadius={[20,10]}
         >
           Next Question
         </Button>

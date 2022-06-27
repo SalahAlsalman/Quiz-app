@@ -2,7 +2,7 @@ import { Button, Heading, Stack, Text, Box } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 import React, { useEffect } from 'react';
 
-const Result = ({ username, score }) => {
+const Result = ({ username, score, categoryOptionName, difficultOption }) => {
   const navigate = useNavigate();
 
   const goHomeClicked = () => {
@@ -16,24 +16,26 @@ const Result = ({ username, score }) => {
       d="flex"
       justifyContent="center"
       alignItems="center"
-      width={"100%"}
+      width={'100%'}
       height="100vh"
     >
       <Box
         alignContent="center"
         textAlign="center"
-        width={"30rem"}
+        width={'30rem'}
         borderRadius={10}
         p={5}
       >
-        <Heading color="white" fontSize={['3rem',"4rem"]}>
+        <Heading color="white" fontSize={['3rem', '4rem']}>
           Results:
         </Heading>
+        <Text color={'white'}>Category: "{categoryOptionName}"</Text>
+        <Text color={'white'}>difficulty: "{difficultOption}"</Text>
       </Box>
       <Box
         alignContent="center"
         textAlign="center"
-        width={['15rem',"30rem"]}
+        width={['15rem', '30rem']}
         borderRadius={10}
         pt={5}
       >
@@ -47,9 +49,9 @@ const Result = ({ username, score }) => {
       <Button
         onClick={goHomeClicked}
         boxShadow="dark-lg"
-        width={['15rem',"20rem"]}
+        width={['15rem', '20rem']}
         height="5rem"
-        fontSize={['1.75rem',"2rem"]}
+        fontSize={['1.75rem', '2rem']}
         color="white"
         backgroundColor="whiteAlpha.400"
         borderRadius={15}

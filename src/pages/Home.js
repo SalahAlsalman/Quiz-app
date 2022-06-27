@@ -20,11 +20,10 @@ import {
 import { useNavigate } from 'react-router-dom';
 import QuizImage from '../img/quiz.svg';
 
-const Home = ({ setUsername, username, setApiQuestions }) => {
+const Home = ({ setUsername, username, setApiQuestions,setCategoryOptionName ,difficultOption, setDifficultOption}) => {
   const [difficultyOptions] = useState(['Easy', 'Medium', 'Hard']);
   const [categoryOptions, setCategoryOptions] = useState([]);
   const [categoryOption, setCategoryOption] = useState('');
-  const [difficultOption, setDifficultOption] = useState('');
 
   const [errorStatus, setErrorStatus] = useState(false);
 
@@ -101,6 +100,7 @@ const Home = ({ setUsername, username, setApiQuestions }) => {
     categoryOptions.map(e => {
       if (e.name === option) {
         setCategoryOption(e.id);
+        setCategoryOptionName(e.name);
       }
     });
   };

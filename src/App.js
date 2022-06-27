@@ -21,6 +21,8 @@ function App() {
   const [username, setUsername] = useState('');
   const [score, setScore] = useState(0);
   const [apiQuestions, setApiQuestions] = useState([]);
+  const [categoryOptionName, setCategoryOptionName] = useState('');
+  const [difficultOption, setDifficultOption] = useState('');
 
   return (
     <BrowserRouter>
@@ -32,6 +34,9 @@ function App() {
               username={username}
               setUsername={setUsername}
               setApiQuestions={setApiQuestions}
+              setCategoryOptionName={setCategoryOptionName}
+              difficultOption={difficultOption}
+              setDifficultOption={setDifficultOption}
             />
           }
         />
@@ -47,7 +52,14 @@ function App() {
         />
         <Route
           path="/result"
-          element={<Result score={score} username={username} />}
+          element={
+            <Result
+              score={score}
+              username={username}
+              categoryOptionName={categoryOptionName}
+              difficultOption={difficultOption}
+            />
+          }
         />
         <Route path="/categorynotfound" element={<CategoryNotFound />} />
         <Route path="*" element={<NotFound />} />
